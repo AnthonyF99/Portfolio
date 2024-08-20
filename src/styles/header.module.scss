@@ -1,0 +1,46 @@
+.header {
+    display: inline-flex;
+    position: fixed;
+    justify-content: flex-end;
+    width: 100%;
+    background-color: #1F1F1F;
+    z-index: 999;
+    padding: 30px;
+    top: 0;
+    left: 0;
+    margin-bottom: 30px;
+}
+
+.links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-right: 10%;
+    // Ajoutez d'autres styles pour les liens si nécessaire
+    & > li > a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .icon {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .links li a {
+        display: none;
+    }
+    .links {
+        .icon {
+            display: flex;
+        }
+    }
+}

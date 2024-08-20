@@ -1,0 +1,107 @@
+.container {
+    display: flex;
+    overflow: hidden;
+    .contactcontainer {
+        width: 100%;
+        .contactform {
+            margin-top: 20%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            grid-column-gap: 80px;
+            grid-row-gap: 30px;
+            padding: 80px;
+            margin-left: 5%;
+            .input {
+                border: none;
+                color: white;
+                padding: 10px;
+                background-color: #1F1F1F;
+                border-bottom: 1px solid white !important;
+            }
+            .textarea {         
+                border: none;
+                color: white;       
+                border-bottom: 1px solid white !important;
+                background-color: #1F1F1F;
+            }
+            .title { grid-area: 1 / 1 / 2 / 2; 
+                font-size: 2em;
+            }
+            .namecontainer { grid-area: 2 / 1 / 3 / 2; 
+                display: flex;
+                flex-direction: column;
+            }
+            .objectcontainer { grid-area: 3 / 1 / 4 / 2; 
+                display: flex;
+                flex-direction: column;
+            }
+            .messagecontainer { grid-area: 4 / 1 / 5 / 2; 
+                display: flex;
+                flex-direction: column;
+            }
+            .mailcontainer { grid-area: 2 / 2 / 3 / 3; 
+                display: flex;
+                flex-direction: column;
+            }
+            .submitbtn { grid-area: 5 / 1 / 6 / 2;
+                font-size: 1em;
+                color: white;
+                background-color: transparent !important;
+                border: none;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container {
+        .asidecontainer {
+            display: none;
+        }
+        .contactcontainer {
+            .contactform{
+                display: flex;
+                flex-direction: column;
+                gap: 60px;
+            }
+        }
+
+    }
+}
+
+@media screen and (min-width: 767.98px) and (max-width: 1023px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        .asidecontainer {
+            order: 0;
+            width: 100%;
+            & > img {
+                width: 100%;
+                height: 500px;
+            }
+        }
+        .contactcontainer {
+            width: auto;
+            height: auto;
+            .contactform{
+                font-size: 1.5rem;
+                .title {
+                    font-size: 2.3rem;
+                }
+                .input {
+                    font-size: 1.3rem;
+                }
+                .textarea {
+                    font-size: 1.3rem;
+                }
+            }
+        }
+    }
+}

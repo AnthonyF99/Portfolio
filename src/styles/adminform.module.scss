@@ -1,0 +1,16 @@
+.logintcontainer {
+    margin-top: 200px;
+    padding-top: 1px; /* Pour prévenir la collapse des marges */
+    overflow: hidden; /* Alternativement, utilise cette propriété */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .loginform {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        border: 1px solid white;
+        box-sizing: border-box;
+    }
+}

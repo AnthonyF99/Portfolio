@@ -1,0 +1,37 @@
+[
+    {
+        "title": "Projet 1",
+        "description": "Créez la page d'acceuil d'une agence de l'agence de voyage booki",
+        "imageurl": "/assets/Projects/P2Booki.png",
+        "more": "Pour ce projet je devais utiilser le html et le css pour créer une page static pour une agence de voyage",
+        "link": "https://github.com/AnthonyF99/OpenClassroomProject2"
+    },
+    {
+        "title": "Projet 2",
+        "description": "Créez une page web dynamique en javascript",
+        "imageurl": "/assets/Projects/P3Sophiebluel.png",
+        "more": "Pour ce projet j'avais pour but de dyanmiser une page web déjà existante grâce au javascript",
+        "link": "https://github.com/AnthonyF99/OpenClassroomProject3"
+    },
+    {
+        "title": "Projet 3",
+        "description": "Débuggez et otpimisez un site de photographe",
+        "imageurl": "/assets/Projects/P4Ninacarducci.png",
+        "more": "Pour ce projet je devais règler les problèmes de performances, et les bugs de la page web d'une photographe ainsi que son référencement",
+        "link": "https://github.com/AnthonyF99/OpenClassroomProject4"
+    },
+    {
+        "title": "Projet 4",
+        "description": "Créez une application web de location immobilière avec React",
+        "imageurl": "/assets/Projects/P5Kasa.png",
+        "more": "Pour ce projet j'ai du créer entièrement la page web de l'agence kasa entièrement en React Native",
+        "link": "https://github.com/AnthonyF99/OpenClassroomProject5"
+    },
+    {
+        "title": "Projet 5",
+        "description": "Développez le back-end d'un site de notationd de livres",
+        "imageurl": "/assets/Projects/P6Monvieuxgrimoire.png",
+        "more": "Pour ce projet j'ai du développez le backend du site MonVieuxgrimoire",
+        "link": "https://github.com/AnthonyF99/OpenClassroomProject6"
+    }
+]

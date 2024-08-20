@@ -1,0 +1,102 @@
+[
+    {
+        "title": "HTML",
+        "url": "/assets/SkillsIcons/Hardskills/html-svgrepo-com.svg",
+        "category": "Hard Skills"
+    },
+    {
+        "title": "CSS",
+        "url": "/assets/SkillsIcons/Hardskills/css-svgrepo-com.svg",
+        "category": "Hard Skills"
+    },
+    {
+        "title": "JavaScript",
+        "url": "/assets/SkillsIcons/Hardskills/javascript-16-svgrepo-com.svg",
+        "category": "Hard Skills"
+    },
+    {
+        "title": "React",
+        "url": "/assets/SkillsIcons/Hardskills/react-16-svgrepo-com.svg",
+        "category": "Hard Skills"
+    },
+    {
+        "title": "REST APIs",
+        "url": "/assets/SkillsIcons/Hardskills/rest-api-svgrepo-com.svg",
+        "category": "Hard Skills"
+    },
+    {
+        "title": "Express",
+        "url": "/assets/SkillsIcons/Hardskills/express-svgrepo-com.svg",
+        "category": "Hard Skills"
+    },
+    {
+        "title": "SASS",
+        "url": "/assets/SkillsIcons/Hardskills/sass-svgrepo-com.svg",
+        "category": "Hard Skills"
+    },
+    {
+        "title": "Node.js",
+        "url": "/assets/SkillsIcons/Hardskills/node-js-svgrepo-com.svg",
+        "category": "Hard Skills"
+    },
+    {
+        "title": "MongoDB",
+        "url": "/assets/SkillsIcons/Hardskills/mongodb-svgrepo-com.svg",
+        "category": "Hard Skills"
+    },
+    {
+        "title": "Communication",
+        "url": "/assets/SkillsIcons/Softskills/hands-helping-svgrepo-com.svg",
+        "category": "Soft Skills"
+    },
+    {
+        "title": "Gestion du temps",
+        "url": "/assets/SkillsIcons/Softskills/time-sand-svgrepo-com.svg",
+        "category": "Soft Skills"
+    },
+    {
+        "title": "Motivation",
+        "url": "/assets/SkillsIcons/Softskills/achievement-2-svgrepo-com.svg",
+        "category": "Soft Skills"
+    },
+    {
+        "title": "Empathie",
+        "url": "/assets/com.png",
+        "category": "Soft Skills"
+    },
+    {
+        "title": "Github",
+        "url": "/assets/github-mark.svg",
+        "category": "Tools"
+    },
+    {
+        "title": "Git",
+        "url": "/assets/com.png",
+        "category": "Tools"
+    },
+    {
+        "title": "Visual studio code",
+        "url": "/assets/com.png",
+        "category": "Tools"
+    },
+    {
+        "title": "Npm",
+        "url": "/assets/com.png",
+        "category": "Tools"
+    },
+    {
+        "title": "Yarn",
+        "url": "/assets/com.png",
+        "category": "Tools"
+    },
+    {
+        "title": "Figma",
+        "url": "/assets/com.png",
+        "category": "Tools"
+    },
+    {
+        "title": "Notion",
+        "url": "/assets/com.png",
+        "category": "Tools"
+    }
+]

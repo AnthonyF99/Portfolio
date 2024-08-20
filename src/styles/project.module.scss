@@ -1,0 +1,196 @@
+// styles/project.module.scss
+
+$width: 623px;
+$height: 1257.95px;
+
+.container {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  .moreinfo {
+    display: flex;
+    flex-direction: column;
+    bottom: 50px;
+    right: 0;
+    width: 35%;
+    padding: 20px;
+    position: absolute;
+    background-color: #1c1c1cdc;
+    border-radius: 5px;
+    & > a > button {
+      color: white;
+      background: #222222;
+      border: #8C8C8C 1px solid;
+      padding: 20px;
+      border-radius: 10px;
+      &:hover {
+        background: linear-gradient(#222222, #222222) padding-box,
+        linear-gradient(to bottom, #8C8C8C, #5A7251, #1f3317) border-box;
+        border: 1px solid transparent;
+        cursor: pointer;
+      }
+    }
+  }
+  .cardcontainer {
+    overflow: scroll;
+    position: relative;
+    left: -310px;
+    top: 0;
+    width: $width;
+    height: $height;
+    transform: skewx(20deg);
+    background-color: #1c1c1cdc;
+
+    .projects {
+      position: absolute; 
+      top: 0;
+      left: 0;
+      transform: skewx(-20deg);
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      margin-top: 40%;
+      gap: 30px;
+
+      .cards {
+        width: 100%; // Les cartes occupent toute la largeur du conteneur de projet
+        height: 121px; // Hauteur des cartes
+        background-color: #222222;
+        border: 1px solid #8C8C8C;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 25px;
+        display: flex;
+        .cardinfo{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          color: white;
+          width: 100%;
+          padding: 20px;
+          .cardimage {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px; // Ajouter un espacement entre l'image et le texte
+          }
+          .cardtext {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-wrap: wrap;
+          }
+        }
+        &:hover {
+          background: linear-gradient(#222222, #222222) padding-box,
+          linear-gradient(to bottom, #8C8C8C, #5A7251, #1f3317) border-box;
+          border: 1px solid transparent;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 576px) {
+  .container {
+    height: auto;  // Ajuster la hauteur en fonction du contenu
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    
+    .moreinfo {
+      z-index: 3;
+      width: 100%;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .cardcontainer {
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 0;  // Réinitialiser le padding si nécessaire
+      transform: none;
+
+      .projects {
+        width: 100%;
+        margin-top: 0;
+        gap: 20px;
+        transform: none;
+
+        .cards {
+          width: 100%;
+          height: auto; // Ajuster la hauteur automatiquement
+          flex-direction: column;
+          align-items: center;
+
+          .cardinfo {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: auto; // Positionner la carte info en bas du conteneur
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 767.98px) and (max-width: 1023px) {
+  .container {
+    height: auto;  // Ajuster la hauteur en fonction du contenu
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    
+    .moreinfo {
+      order: 1;
+      z-index: 3;
+      width: 100%;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .cardcontainer {
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 0;  // Réinitialiser le padding si nécessaire
+
+      .projects {
+        width: 100%;
+        margin-top: 0;
+        gap: 20px;
+
+        .cards {
+          width: 80%;
+          height: auto; // Ajuster la hauteur automatiquement
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+/* 
+//X-Small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) { ... }
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { ... }
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) { ... }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) { ... }
+
+*/

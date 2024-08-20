@@ -1,0 +1,101 @@
+.cvcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cvbutton {
+    &>button {
+        background-color: transparent !important;
+        color: white;
+        border: 1px solid white;
+        padding: 30px 20px;
+        width: 492px;
+        font-size: 3em;
+        border-radius: 20px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.cvblock {
+    margin-top: 30px;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 30px 60px;
+    width: 521px;
+    height: 602px;
+    .cvtitle {
+        display: flex;
+        justify-content: center;
+        font-size: 2em;
+    }
+    .cvinfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &>ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+    .cvcontainer {
+      max-width: 576px;
+    }
+    
+    .cvbutton {
+        display: flex;
+        justify-content: center;
+        &>button {
+            padding: 30px 20px;
+            width: 100%;
+            font-size: 2em;
+            border-radius: 20px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    
+    .cvblock {
+        margin-top: 30px;
+        border: 1px solid white;
+        border-radius: 20px;
+        padding: 30px 60px;
+        max-width: 250px;
+        width:100%;
+        height: auto;
+        .cvtitle {
+            display: flex;
+            justify-content: center;
+            font-size: 2em;
+        }
+        .cvinfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            &>ul {
+                list-style-type: none;
+                padding: 0;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 767.98px) and (max-width: 1023px) {
+    .cvcontainer {
+        width: auto;
+        height: auto;
+    }
+
+    .cvblock {
+        height: auto;
+        font-size: 1.3rem;
+    }
+}

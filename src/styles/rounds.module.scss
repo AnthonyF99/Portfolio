@@ -1,0 +1,28 @@
+.container {
+    .rounds {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .round {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid white;
+        border-radius: 50%;
+        padding: 15px;
+        width: 50px; 
+        height: 50px; 
+        overflow: hidden;
+        &:hover {
+            background: linear-gradient(#1F1F1F, #1F1F1F) padding-box,
+            linear-gradient(to bottom, #8C8C8C, #5A7251, #1f3317) border-box;
+            border: 1px solid transparent;
+            }
+        }
+    }
+    .rounds p {
+        margin-top: 20px;
+        text-align: center;
+    }
+}

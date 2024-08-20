@@ -1,0 +1,24 @@
+.presentation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    height: 1024px;
+    padding: 100px;
+        & > h1 {
+            font-size: 3em;
+        }
+        & > h2 {
+            font-size: 2em;
+        }
+        & > p {
+            font-size: 1.5em;
+        }
+}
+
+@media screen and (max-width: 600px) {
+    .presentation {
+        height: 512px;
+    }
+}
