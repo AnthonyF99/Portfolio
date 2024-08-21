@@ -41,7 +41,9 @@ export default function Projectcard() {
         <div className={styles.projects}>
           <h1>Projets</h1>
           {projects.map((project, index) => (
-            <div key={index} className={styles.cards} onClick={() => handleCardClick(project)}>
+            <div key={index} className={styles.cards} 
+                style={{ marginLeft: `${(index % 5) * 60}px` }} // Recommence le décalage toutes les 4 cartes
+                onClick={() => handleCardClick(project)}>
               <div className={styles.cardinfo}>
                 <div className={styles.cardimage}>
                   <Image src={project.imageurl} width={100} height={100} alt={project.title} />
