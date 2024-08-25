@@ -1,3 +1,5 @@
+@import "shared_variables";
+
 .container {
     display: flex;
     height: 100vh;
@@ -12,14 +14,17 @@
             padding: 0;
             & li > button {
                 padding: 0;
-                color: white;
+                color: $textcolor;
                 margin-top: 20px;
                 margin-bottom: 2px;
                 background-color: transparent;
                 border: none;
                 font-size: 1.3em;
                 &:hover {
-                    color: rgb(92, 91, 91);
+                    color: $texthover;
+                }
+                &.active {
+                    color: $activetext;
                 }
             }
         }
@@ -60,11 +65,6 @@
                 align-items: center;
                 justify-content: center;
                 gap: 30px;
-                & li > button {
-                    &:hover {
-                        color: rgb(92, 91, 91);
-                    }
-                }
             }
         }
         .skills {

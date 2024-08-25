@@ -1,3 +1,5 @@
+@import "shared_variables";
+
 .container {
     .rounds {
         display: flex;
@@ -8,7 +10,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        border: 1px solid white;
+        border: 1px solid $border;
         border-radius: 50%;
         padding: 15px;
         width: 50px; 

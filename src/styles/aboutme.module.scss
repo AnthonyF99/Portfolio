@@ -1,4 +1,5 @@
 /* styles/aboutme.module.scss */
+@import "shared_variables";
 
 .container {
     display: grid;
@@ -54,7 +55,7 @@
     margin-top: 20px; /* Espacement au-dessus des icônes sociales */
     width: 100%; /* Prend toute la largeur disponible */
     & > .socialround {
-        border: 1px solid white;
+        border: 1px solid $border;
         border-radius: 50%;
         padding: 15px;
         width: 50px; /* Ajuste la taille des icônes sociales */
