@@ -23,7 +23,6 @@ export default function Projectcard() {
           method: 'GET'
         });  // Utilise votre endpoint API
         const data = await response.json();
-        console.log('Projets récupérés :', data); // Affiche les données
         setProjects(data);
       } catch (error) {
         console.error('Erreur lors du chargement des données des projets :', error);

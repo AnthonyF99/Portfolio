@@ -16,7 +16,6 @@ export default function Skills() {
               method: 'GET'
             });  // Utilise votre endpoint API
             const data = await response.json();
-            console.log('Projets récupérés :', data); // Affiche les données
             setSkills(data);
           } catch (error) {
             console.error('Erreur lors du chargement des données des projets :', error);

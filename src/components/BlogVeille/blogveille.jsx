@@ -1,53 +1,48 @@
 import styles from '../../styles/blogveille.module.scss'
 import Link from 'next/link'
 import Image from 'next/image'
-import Redhair from '../../../public/assets/redhair.jpg'
-import Horns from '../../../public/assets/horns.jpg'
+import {useState, useEffect} from 'react'
 
+export default function Blogveille() {
+  const [article, setArticle] = useState([])
 
-export default function Blogveille({image, title, description, category}) {
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        const response = await fetch('/api/article', {
+          method: 'GET'
+        });  // Utilise votre endpoint API
+        const data = await response.json();
+        setArticle(data);
+      } catch (error) {
+        console.error('Erreur lors du chargement des données des articles :', error);
+      }
+    };
+
+    fetchArticle();
+  }, []);
+
     return (
         <div className={styles.container}>
           <div className={styles.cards}>
-            <div className={styles.card}>
+          {article.map((article, index) => (
+            <div className={styles.card}
+            key={article._id}>
             <Image
-                src={Redhair}
+                src={article.url}
                 width={277}
                 height={200}
-                alt="Photo"
+                alt={article.title}
               />
               <div className={styles.cardinfo}>
-                <p>{title}</p>
-                <p>{description}</p>
+                <p>{article.title}</p>
+                <p>{article.description}</p>
               </div>
-                <div className={styles.category}><p>{category}</p></div>
+                <div className={styles.category}>
+                  <p>{article.category}</p>
+                  </div>
             </div>
-            <div className={styles.card}>
-            <Image
-                src={Horns}
-                width={277}
-                height={200}
-                alt="Photo"
-                />
-              <div className={styles.cardinfo}>
-                <p>Tout sur les flexbox en 5 minutes</p>
-                <p>Sipnosis de l'article en question</p>
-              </div>
-                <div className={styles.category}><p>{category}</p></div>
-            </div>
-            <div className={styles.card}>
-            <Image
-                src={Horns}
-                width={277}
-                height={200}
-                alt="Photo"
-                />
-              <div className={styles.cardinfo}>
-                <p>Tout sur les flexbox en 5 minutes</p>
-                <p>Sipnosis de l'article en question</p>
-              </div>
-                <div className={styles.category}><p>{category}</p></div>
-            </div>
+          ))}
           </div>
         </div>
     );
