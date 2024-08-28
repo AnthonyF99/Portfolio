@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 export default function Modal({ onClose, children, title }) {
   // Fonction pour gérer le clic sur le bouton de fermeture
   const handleCloseClick = (e) => {
@@ -8,9 +6,20 @@ export default function Modal({ onClose, children, title }) {
   };
 
   return (
+    <div
+      className="modal-backdrop"
+      onClick={() => {
+        // close modal when outside of modal is clicked
+        onClose();
+      }}
+    >
     <div className="modal-overlay">
       <div className="modal-wrapper">
-        <div className="modal">
+        <div className="modal"        
+        onClick={e => {
+          // do not close modal if anything inside modal content is clicked
+          e.stopPropagation();
+        }}>
           <div className="modal-header">
             <a href="#" onClick={handleCloseClick}>
               x
@@ -20,6 +29,7 @@ export default function Modal({ onClose, children, title }) {
           <div className="modal-body">{children}</div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

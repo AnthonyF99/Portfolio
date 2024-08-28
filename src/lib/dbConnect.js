@@ -1,11 +1,9 @@
-// ./lib/dbConnect.js
-
 import mongoose from 'mongoose';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  throw new Error('Define the MONGODB_URI environmental variable');
+  throw new Error('Définir la variable d\'environnement MONGODB_URI');
 }
 
 let cached = global.mongoose;
@@ -25,6 +23,7 @@ async function dbConnect() {
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      console.log('Connecté à MongoDB'); // Log de connexion réussie
       return mongoose;
     });
   }

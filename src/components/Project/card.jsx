@@ -11,13 +11,26 @@ export default function Projectcard() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 5;
 
   useEffect(() => {
-    // Charger les données des projets depuis le fichier JSON
-    fetch('/data/projects.json')
-      .then(response => response.json())
-      .then(data => setProjects(data))
-      .catch(error => console.error('Erreur lors du chargement des données des projets :', error));
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch('/api/projects', {
+          method: 'GET'
+        });  // Utilise votre endpoint API
+        const data = await response.json();
+        console.log('Projets récupérés :', data); // Affiche les données
+        setProjects(data);
+      } catch (error) {
+        console.error('Erreur lors du chargement des données des projets :', error);
+      }
+    };
+
+    fetchProjects();
 
     // Détecter si l'utilisateur est sur mobile
     const checkMobile = () => {
@@ -44,6 +57,13 @@ export default function Projectcard() {
     setShowModal(false);
   };
 
+  // Pagination logic - No pagination on mobile
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = isMobile ? projects : projects.slice(indexOfFirstProject, indexOfLastProject);
+
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
+
   return (
     <div
       className={styles.container}
@@ -52,6 +72,7 @@ export default function Projectcard() {
       {!isMobile && selectedProject && (
         <div className={styles.moreinfo}>
           <p>{selectedProject.more}</p>
+          <p>{selectedProject.skills}</p>
           <Link href={selectedProject.link}><button>Accèder au github</button></Link>
         </div>
       )}
@@ -59,9 +80,9 @@ export default function Projectcard() {
       <div className={styles.cardcontainer}>
         <div className={styles.projects}>
           <h1>Projets</h1>
-          {projects.map((project, index) => (
+          {currentProjects.map((project, index) => (
             <div 
-              key={index} 
+              key={project._id} 
               className={styles.cards}
               style={{ marginLeft: `${(index % 5) * 60}px` }} 
               onClick={() => handleCardClick(project)}
@@ -77,6 +98,25 @@ export default function Projectcard() {
               </div>
             </div>
           ))}
+
+          {/* Pagination controls - Hidden on mobile */}
+          {!isMobile && (
+            <div className={styles.pagination}>
+              <button 
+                onClick={() => setCurrentPage(currentPage - 1)} 
+                disabled={currentPage === 1}
+              >
+                Précédent
+              </button>
+              <span>Page {currentPage} sur {totalPages}</span>
+              <button 
+                onClick={() => setCurrentPage(currentPage + 1)} 
+                disabled={currentPage === totalPages}
+              >
+                Suivant
+              </button>
+            </div>
+          )}
         </div>
       </div>
 

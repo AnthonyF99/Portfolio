@@ -8,13 +8,24 @@ export default function Skills() {
     const [skills, setSkills] = useState([]);
     const [activeCategory, setActiveCategory] = useState('Hard Skills');
 
+
     useEffect(() => {
-        // Charger les données des compétences depuis le fichier JSON
-        fetch('/data/skills.json')
-            .then(response => response.json())
-            .then(data => setSkills(data))
-            .catch(error => console.error('Error loading skills data:', error));
+        const fetchSkills = async () => {
+          try {
+            const response = await fetch('/api/skills', {
+              method: 'GET'
+            });  // Utilise votre endpoint API
+            const data = await response.json();
+            console.log('Projets récupérés :', data); // Affiche les données
+            setSkills(data);
+          } catch (error) {
+            console.error('Erreur lors du chargement des données des projets :', error);
+          }
+        };
+    
+        fetchSkills();
     }, []);
+
 
     const handleCategoryChange = (category) => {
         setActiveCategory(category);
