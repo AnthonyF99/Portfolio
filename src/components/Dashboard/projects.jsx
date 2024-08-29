@@ -19,13 +19,15 @@ const Projects = () => {
             <table>
                 <thead>
                     <tr>
+                        <th>N°</th>
                         <th>Nom du projet</th>
                         <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {projects.map((project) => (
+                    {projects.map((project, index) => (
                         <tr key={project._id}>
+                            <td>{index + 1}</td>
                             <td>{project.title}</td>
                             <td>{project.description}</td>
                             <td><button className={styles.modifyButton}>Modifier projet</button></td>

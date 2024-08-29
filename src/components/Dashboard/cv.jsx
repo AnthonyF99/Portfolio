@@ -19,14 +19,16 @@ const Cvs = () => {
             <table>
                 <thead>
                     <tr>
+                        <th>N°</th>
                         <th>Nom exp/educ</th>
                         <th>Description</th>
                         <th>Category</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {cvs.map((cv) => (
+                    {cvs.map((cv, index) => (
                         <tr key={cv._id}>
+                            <td>{index + 1}</td>
                             <td>{cv.title}</td>
                             <td>{cv.description}</td>
                             <td>{cv.category}</td>

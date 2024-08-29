@@ -20,12 +20,14 @@ const Skills = () => {
             <table>
                 <thead>
                     <tr>
+                        <th>N°</th>
                         <th>Skill</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {skills.map((skill) => (
+                    {skills.map((skill, index) => (
                         <tr key={skill._id}>
+                            <td>{index + 1}</td>
                             <td><Round title={skill.title} url={skill.url}/></td>
                             <td><button className={styles.modifyButton}>Modifier skill</button></td>
                             <td><button className={styles.deleteButton}>Supprimer skill</button></td>
