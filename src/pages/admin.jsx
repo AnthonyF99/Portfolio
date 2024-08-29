@@ -1,27 +1,19 @@
 import '../styles/globals.scss';
 import Header from '../components/Header/header.jsx';
+import Dashboard from '../components/Dashboard/dashboard.jsx';
 
 
-export default function Home() {
-    return (
+export default function Admin() {
+  return (
+    <>
+      <header>
+        <Header/>
+      </header>
       <main>
-        <div>
-            <Header/>
-            <section id="accueil">
-            </section>
-            <section id="a-propos">
-            </section>
-            <section id="skills">
-            </section>
-            <section id="projets">
-            </section>
-            <section id="cv">
-            </section>
-            <section id="veille-technologique">
-            </section>
-            <section id="contact">
-            </section>
+        <div className="dashboard-container">
+          <Dashboard/>
         </div>
       </main>
-    );
-  }
+    </>
+  );
+}
