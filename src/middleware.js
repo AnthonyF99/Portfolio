@@ -4,9 +4,11 @@ import jwt from 'jsonwebtoken';
 
 export async function middleware(request) {
   const token = request.cookies.get('token'); // Récupérer le token des cookies
+  const url = request.nextUrl.clone()
 
   if (!token) {
-    return NextResponse.redirect('/login');
+    url.pathname = '/login'
+    return NextResponse.rewrite(url)
   }
 
   try {
@@ -14,7 +16,7 @@ export async function middleware(request) {
     request.user = user; // Attacher les informations utilisateur à la requête
     return NextResponse.next();
   } catch (error) {
-    return NextResponse.redirect('/login');
+    return NextResponse.rewrite(url)
   }
 }
 

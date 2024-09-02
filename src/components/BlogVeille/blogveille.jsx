@@ -2,26 +2,13 @@ import styles from '../../styles/blogveille.module.scss'
 import Link from 'next/link'
 import Image from 'next/image'
 import {useState, useEffect} from 'react'
+import useModularFetch from '../../hooks/modularFetch.js';
+
 
 export default function Blogveille() {
-  const [article, setArticle] = useState([])
-
-  useEffect(() => {
-    const fetchArticle = async () => {
-      try {
-        const response = await fetch('/api/article', {
-          method: 'GET'
-        });  // Utilise votre endpoint API
-        const data = await response.json();
-        setArticle(data);
-      } catch (error) {
-        console.error('Erreur lors du chargement des données des articles :', error);
-      }
-    };
-
-    fetchArticle();
-  }, []);
-
+  const { entities: article, loading, error } = useModularFetch('/api/articles');
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading projects: {error.message}</p>;
     return (
         <div className={styles.container}>
           <div className={styles.cards}>

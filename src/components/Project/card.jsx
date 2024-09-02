@@ -1,36 +1,24 @@
 import styles from '../../styles/project.module.scss';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Modal from '../Modal/modal';
+import useModularFetch from '../../hooks/modularFetch.js';
 
 export default function Projectcard() {
   const [bgImage, setBgImage] = useState('');
-  const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  const { entities: projects, loading, error } = useModularFetch('/api/projects');
   
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 5;
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch('/api/projects', {
-          method: 'GET'
-        });  // Utilise votre endpoint API
-        const data = await response.json();
-        setProjects(data);
-      } catch (error) {
-        console.error('Erreur lors du chargement des données des projets :', error);
-      }
-    };
-
-    fetchProjects();
-
     // Détecter si l'utilisateur est sur mobile
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 1023);
@@ -62,6 +50,9 @@ export default function Projectcard() {
   const currentProjects = isMobile ? projects : projects.slice(indexOfFirstProject, indexOfLastProject);
 
   const totalPages = Math.ceil(projects.length / projectsPerPage);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading projects: {error.message}</p>;
 
   return (
     <div

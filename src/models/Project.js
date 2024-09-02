@@ -26,6 +26,10 @@ const ProjectSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide a link to the project.'],
   },
+  websitelink: {
+    type: String,
+    required: [true, 'Please provide a link to the website of the project.'],
+  },
 });
 
 export default mongoose.models.Project || mongoose.model('Project', ProjectSchema);

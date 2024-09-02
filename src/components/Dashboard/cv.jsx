@@ -1,22 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/dashboard.module.scss';
+import DynamicForm from '../Modal/dynamicform.jsx';
+import useEntityManager from '../../hooks/useEntityManager.js';
 
 const Cvs = () => {
-    const [cvs, setCvs] = useState([]);
+    const {
+        entities: cvs,
+        isFormOpen,
+        formType,
+        selectedEntity,
+        handleAddEntity,
+        handleEditEntity,
+        handleSubmit,
+        handleDeleteEntity,
+        handleCloseForm,
+      } = useEntityManager('cv', '/api/cvs');
 
-    useEffect(() => {
-        // Appel API pour récupérer les projets
-        fetch('/api/cvs')
-            .then(response => response.json())
-            .then(data => setCvs(data))
-            .catch(error => console.error('Error fetching cvs:', error));
-    }, []); // Le tableau vide [] signifie que ce useEffect ne se déclenche qu'une fois au montage du composant
+      const handleToggleForm = () => {
+        if (isFormOpen) {
+          handleCloseForm(); // Fermer le formulaire si ouvert
+        } else {
+          handleAddEntity(); // Ouvrir le formulaire pour ajouter
+        }
+      };
 
     return (
         <div className={styles.cv}>
             <h2 className={styles.cvtitle}>CV</h2>
-            <button className={styles.addButton}>Ajouter une education ou experience pro</button>
-            <table>
+            <button className={styles.addButton} onClick={handleToggleForm}>
+                {isFormOpen ? 'Annuler' : 'Ajouter un cv'}
+            </button>
+
+            
+            {isFormOpen && (
+                <div>
+                    <h3>{formType === 'add' ? 'Ajouter un cv' : 'Modifier le cv'}</h3>
+                    <DynamicForm 
+                        type="cv" 
+                        onSubmit={handleSubmit} 
+                        initialData={selectedEntity || {}}
+                    />
+                    {/* Le bouton "Annuler" est maintenant inclus dans le bouton principal */}
+                </div>
+               )}               
+               <table>
                 <thead>
                     <tr>
                         <th>N°</th>
@@ -32,8 +59,10 @@ const Cvs = () => {
                             <td>{cv.title}</td>
                             <td>{cv.description}</td>
                             <td>{cv.category}</td>
-                            <td><button className={styles.modifyButton}>Modifier cv</button></td>
-                            <td><button className={styles.deleteButton}>Supprimer cv</button></td>
+                            <td>
+                                <button className={styles.modifyButton} onClick={() => handleEditEntity(cv)}>Modifier skll</button>
+                                <button className={styles.deleteButton} onClick={() => handleDeleteEntity(cv._id)}>Supprimer cv</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

@@ -3,27 +3,17 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Round from '../Rounds/rounds.jsx';
 import HTML from '../../../public/assets/html.png'
+import useModularFetch from '../../hooks/modularFetch.js';
+
 
 export default function Skills() {
-    const [skills, setSkills] = useState([]);
     const [activeCategory, setActiveCategory] = useState('Hard Skills');
+    const { entities: skills, loading, error } = useModularFetch('/api/skills');
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error loading projects: {error.message}</p>;
 
 
-    useEffect(() => {
-        const fetchSkills = async () => {
-          try {
-            const response = await fetch('/api/skills', {
-              method: 'GET'
-            });  // Utilise votre endpoint API
-            const data = await response.json();
-            setSkills(data);
-          } catch (error) {
-            console.error('Erreur lors du chargement des données des projets :', error);
-          }
-        };
-    
-        fetchSkills();
-    }, []);
 
 
     const handleCategoryChange = (category) => {

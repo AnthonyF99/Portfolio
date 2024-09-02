@@ -1,41 +1,61 @@
 import styles from '../../styles/cv.module.scss';
+import useModularFetch from '../../hooks/modularFetch.js';
 
 export default function Cv() {
+    const { entities: cvData, loading, error } = useModularFetch('/api/cvs');
+
+    const handleDownload = async () => {
+        try {
+            const response = await fetch('/api/download');
+
+            // Vérification si la réponse est OK
+            if (!response.ok) {
+                console.error('Erreur HTTP: ', response.status, response.statusText);
+                throw new Error('Le téléchargement a échoué. Statut : ' + response.status);
+            }
+
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Mycv.pdf';
+            link.click();
+            window.URL.revokeObjectURL(url); // Libère la mémoire
+
+        } catch (error) {
+            console.error('Erreur lors du téléchargement :', error);
+            alert('Le téléchargement a échoué. Veuillez réessayer plus tard.');
+        }
+    };
+
+    if (loading) {
+        return <p>Chargement en cours...</p>;
+    }
+
+    if (error) {
+        return <p>Erreur lors de la récupération des données: {error.message}</p>;
+    }
+
     return (
         <div className={styles.cvcontainer}>
             <div className={styles.cvbutton}>
-                <button id="cvbtn">Télécharger mon cv</button>
+                <button onClick={handleDownload} id="cvbtn">Télécharger mon cv</button>
             </div>
             <div className={styles.cvblock}>
                 <div className={styles.cvtitle}>
-                    <p>Education</p>
+                    <p>Formation / exp pro</p>
                 </div>
-                <div className={styles.cvinfo}>
-                    <ul>
-                        <li>Lycée bellepierre BAC STMG SIG</li>
-                        <li>2016-2017</li>
-                        <li>Notion de base pour le développemen web</li>
-                    </ul>
-                    <ul>
-                        <li>Lycée bellepierre BTS SIO Non achevée</li>
-                        <li>2017-2018</li>
-                        <li>Cette formation avait pour but de poursuivre l’acquisition
-                            de compétences dans le domaine informatique, tel que la
-                            création de sites web, d’application et gestion de réseau
-                            et cela ma permis de gagné en expérience
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>OpenClassroom - Développeur web</li>
-                        <li>février à octobre 2024</li>
-                        <li>Formation profesionnelle de développement web, au
-                            cours de cette formation j’ai pu apprendre toutes
-                            les compétences essentielles au métier.Titre professionnel niveau 5 : HTML, CSS, Javascript,
-                            React Native, Git & Github, Node.js & express
-                        </li>
-                    </ul>
-                </div>
+                {cvData.map((item) => (
+                    <div key={item._id} className={styles.cvinfo}>
+                        <ul>
+                            <li>{item.title}</li>
+                            <li>{item.date}</li>
+                            <li>{item.description}</li>
+                            <li>{item.category}</li>
+                        </ul>
+                    </div>
+                ))}
             </div>
         </div>
-    )
+    );
 }
