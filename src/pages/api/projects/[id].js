@@ -7,11 +7,11 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case 'PUT':
-      const { title, description, imageurl, more, skills, link } = req.body;
+      const { title, description, imageurl, more, skills, link, websitelink } = req.body;
       try {
         const updatedProject = await Project.findByIdAndUpdate(
           id,
-          { title, description, imageurl, more, skills, link },
+          { title, description, imageurl, more, skills, link, websitelink },
           { new: true }
         );
         if (!updatedProject) {

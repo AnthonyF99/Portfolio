@@ -17,9 +17,9 @@ export default async function handler(req, res) {
       break;
 
     case 'POST':
-      const { title, description, imageurl, more, skills, link } = req.body;
+      const { title, description, imageurl, more, skills, link, websitelink } = req.body;
       try {
-        const newProject = new Project({ title, description, imageurl, more, skills, link });
+        const newProject = new Project({ title, description, imageurl, more, skills, link, websitelink });
         await newProject.save();
         console.log("Projet enregistré avec succès");
         res.status(201).json(newProject); // Retourne le projet créé

@@ -62,8 +62,15 @@ export default function Projectcard() {
       {!isMobile && selectedProject && (
         <div className={styles.moreinfo}>
           <p>{selectedProject.more}</p>
-          <p>{selectedProject.skills}</p>
+          {selectedProject.skills && (
+          <ul>
+          {selectedProject.skills.map((skill, index) => (
+                <li key={index}>{skill}</li>
+              ))}
+          </ul>
+          )}
           <Link href={selectedProject.link}><button>Accèder au github</button></Link>
+          <Link href={selectedProject.websitelink}><button>Accèder au site</button></Link>
         </div>
       )}
       
@@ -115,6 +122,7 @@ export default function Projectcard() {
         <Modal onClose={closeModal} title={selectedProject.title}>
           <p>{selectedProject.more}</p>
           <Link href={selectedProject.link}><button>Accèder au github</button></Link>
+          <Link href={selectedProject.websitelink}><button>Accèder au site</button></Link>
         </Modal>
       )}
     </div>

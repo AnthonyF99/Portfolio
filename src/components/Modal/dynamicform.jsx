@@ -3,14 +3,50 @@ import { schemas } from '../../../public/data/adaptiveform.js';
 
 const DynamicForm = ({ type, onSubmit, initialData }) => {
   // Initialiser l'état avec les données initiales ou un objet vide
-  const [formData, setFormData] = useState(initialData || {});
+  const [formData, setFormData] = useState(initialData || { skills: [] });
 
   // Fonction pour gérer les changements dans les champs du formulaire
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    // Gérer les champs de manière distincte, sauf pour 'skills'
+    if (name === 'skills') {
+      setFormData({
+        ...formData,
+        skills: value.split(',').map((skill) => skill.trim()), // Si tu veux gérer les skills en tant que chaîne
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
+
+  // Fonction spécifique pour ajouter un skill
+  const handleAddSkill = () => {
     setFormData({
       ...formData,
-      [name]: value,
+      skills: [...formData.skills, ''], // Ajouter un nouveau champ de compétence vide
+    });
+  };
+
+  // Fonction pour gérer la modification d'un skill
+  const handleSkillChange = (index, value) => {
+    const newSkills = [...formData.skills];
+    newSkills[index] = value;
+    setFormData({
+      ...formData,
+      skills: newSkills,
+    });
+  };
+
+  // Fonction pour supprimer un skill
+  const handleRemoveSkill = (index) => {
+    const newSkills = formData.skills.filter((_, i) => i !== index);
+    setFormData({
+      ...formData,
+      skills: newSkills,
     });
   };
 
@@ -33,7 +69,21 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
       {schema.map((field) => (
         <div key={field.name}>
           <label>{field.label}</label>
-          {field.type === 'textarea' ? (
+          {field.name === 'skills' ? (
+            <div>
+              {formData.skills && formData.skills.map((skill, index) => (
+                <div key={index}>
+                  <input
+                    type="text"
+                    value={skill}
+                    onChange={(e) => handleSkillChange(index, e.target.value)}
+                  />
+                  <button type="button" onClick={() => handleRemoveSkill(index)}>Remove</button>
+                </div>
+              ))}
+              <button type="button" onClick={handleAddSkill}>Add Skill</button>
+            </div>
+          ) : field.type === 'textarea' ? (
             <textarea
               name={field.name}
               value={formData[field.name] || ''}
