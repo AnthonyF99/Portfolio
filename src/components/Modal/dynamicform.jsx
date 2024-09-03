@@ -115,8 +115,14 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
             />
           )}
         </div>
-        
       ))}
+       {type === 'skill' && formData.url && (
+        <div>
+          <p>Selected Icon:</p>
+          {/* Utiliser directement l'icône choisie */}
+          {Icons[formData.url] && React.createElement(Icons[formData.url])}
+        </div>
+      )}
       <button type="submit">Submit</button>
     </form>
   );
