@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { schemas } from '../../../public/data/adaptiveform.js';
+import * as Icons from 'react-icons/fa'; // Importer toutes les icônes Fa (ou une autre collection)
+import React from 'react'; // Assurez-vous d'importer React pour utiliser React.createElement
 
 const DynamicForm = ({ type, onSubmit, initialData }) => {
   // Initialiser l'état avec les données initiales ou un objet vide
@@ -30,6 +32,7 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
       skills: [...formData.skills, ''], // Ajouter un nouveau champ de compétence vide
     });
   };
+
 
   // Fonction pour gérer la modification d'un skill
   const handleSkillChange = (index, value) => {
@@ -69,7 +72,21 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
       {schema.map((field) => (
         <div key={field.name}>
           <label>{field.label}</label>
-          {field.name === 'skills' ? (
+          {type === 'skill' && field.name === 'url' ? (
+            <select
+              name={field.name}
+              value={formData[field.name] || ''}
+              onChange={handleChange}
+            >
+              <option value="">Select an icon</option>
+              {Object.keys(Icons).map((iconKey) => (
+                <option key={iconKey} value={iconKey}>
+                  {iconKey.replace('Fa', '')}
+                </option>
+              ))}
+            </select>
+          ):
+            field.name === 'skills' ? (
             <div>
               {formData.skills && formData.skills.map((skill, index) => (
                 <div key={index}>
@@ -98,6 +115,7 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
             />
           )}
         </div>
+        
       ))}
       <button type="submit">Submit</button>
     </form>

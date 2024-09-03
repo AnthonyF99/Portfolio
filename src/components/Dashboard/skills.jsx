@@ -51,6 +51,7 @@ const Skills = () => {
                     <tr>
                         <th>N°</th>
                         <th>Skill</th>
+                        <th>Category</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,6 +59,7 @@ const Skills = () => {
                         <tr key={skill._id}>
                             <td>{index + 1}</td>
                             <td><Round title={skill.title} url={skill.url}/></td>
+                            <td>{skill.category}</td>
                             <td>
                                 <button className={styles.modifyButton} onClick={() => handleEditEntity(skill)}>Modifier skll</button>
                                 <button className={styles.deleteButton} onClick={() => handleDeleteEntity(skill._id)}>Supprimer skill</button>

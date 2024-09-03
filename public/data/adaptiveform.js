@@ -16,7 +16,7 @@ export const schemas = {
     ],
     skill: [
         { name: 'title', type: 'text', label: 'Title' },
-        { name: 'url', type: 'text', label: 'Url' },
+        { name: 'url', type: 'select', label: 'Skill icon' },
         { name: 'category', type: 'text', label: 'Category' },
     ],
     cv: [
