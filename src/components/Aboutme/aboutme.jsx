@@ -21,8 +21,8 @@ export default function About() {
             <div className={styles.textcontainer}>
                 <h2>Bonjour, cest Anthony</h2>
                 <h3>Je suis un développeur web</h3>
-                <p>Je m'appelle Anthony Fontaine. Je suis développeur web à Saint-Denis, sur l'ile de la réunion. J’ai repris les cours en 2024 afin d’acquérir de nouvelles compétences en développement web qui complètent aujourd’hui celles déjà acquises dans le cadre des mes précédentes formation et dans le cadre de projets personnel. Je suis aujourd’hui titulaire d’un Titre Professionnel BAC+2 « Développeur web ». Je code principalement en front et backend et j'ai adopté le framework React comme mon outil de travail principal.
-                J'ai aussi pu acquérir de nouvelles compétences liées aux bonnes pratiques et aux savoir-faire professionnels indispensables dans le métier de développeur web (gestion de projets, versioning, ...)</p>
+                <p>Je m&apos;appelle Anthony Fontaine. Je suis développeur web à Saint-Denis, sur l&apos;ile de la réunion. J’ai repris les cours en 2024 afin d’acquérir de nouvelles compétences en développement web qui complètent aujourd’hui celles déjà acquises dans le cadre des mes précédentes formation et dans le cadre de projets personnel. Je suis aujourd’hui titulaire d’un Titre Professionnel BAC+2 « Développeur web ». Je code principalement en front et backend et j&apos;ai adopté le framework React comme mon outil de travail principal.
+                J&apos;ai aussi pu acquérir de nouvelles compétences liées aux bonnes pratiques et aux savoir-faire professionnels indispensables dans le métier de développeur web (gestion de projets, versioning, ...)</p>
             </div>
             <div className={styles.profilephoto}>
                 <Image
