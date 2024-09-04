@@ -1,12 +1,14 @@
 // styles/project.module.scss
+@import "shared_variables";
+
 
 $width: 623px;
 $height: 1257.95px;
 
 .container {
-  height: 100vh;
-  overflow: hidden;
+  height: 105vh;
   display: flex;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -35,7 +37,6 @@ $height: 1257.95px;
     }
   }
   .cardcontainer {
-    overflow: scroll;
     position: relative;
     left: -310px;
     top: 0;
@@ -47,15 +48,17 @@ $height: 1257.95px;
     .projects {
       position: absolute; 
       top: 0;
-      left: 0;
+      left: -30px;
       transform: skewx(-20deg);
       width: 70%;
       display: flex;
       flex-direction: column;
       margin-top: 40%;
       gap: 30px;
+      height: 833px;
 
       .cards {
+        display: flex;
         width: 100%; // Les cartes occupent toute la largeur du conteneur de projet
         height: 121px; // Hauteur des cartes
         background-color: #222222;
@@ -64,7 +67,7 @@ $height: 1257.95px;
         border-top-right-radius: 10px;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 25px;
-        display: flex;
+
         .cardinfo{
           display: flex;
           flex-direction: row;
@@ -94,12 +97,41 @@ $height: 1257.95px;
       }
     }
   }
+  .pagination {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: -10%;
+    left: 10%;
+    margin-top: 20px;
+    gap: 30px;
+    button {
+      background-color: $btnbackground;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: $btnhover;
+      }
+  
+      &:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+    }
+  }
 }
 
 
 @media screen and (max-width: 576px) {
   .container {
     height: auto;  // Ajuster la hauteur en fonction du contenu
+    overflow: hidden;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
@@ -110,32 +142,51 @@ $height: 1257.95px;
       width: 100%;
       margin-top: 20px;
       position: relative;
+      box-sizing: border-box;
+      font-size: 1.3em;
+      & > a > button {
+        font-size: 1em;
+      }
     }
 
     .cardcontainer {
       top: 0;
       left: 0;
       width: 100%;
+      overflow: scroll;
       padding: 0;  // Réinitialiser le padding si nécessaire
       transform: none;
+      box-sizing: border-box;
+      margin-bottom: 50px;
 
       .projects {
         width: 100%;
         margin-top: 0;
         gap: 20px;
+        left: 0;
         transform: none;
+        align-items: center;
+        justify-content: center;
+        height: auto;
 
         .cards {
-          width: 100%;
+          width: 80%;
           height: auto; // Ajuster la hauteur automatiquement
           flex-direction: column;
           align-items: center;
+          margin-left: 0 !important;
 
           .cardinfo {
             flex-direction: column;
             align-items: center;
             text-align: center;
             margin-top: auto; // Positionner la carte info en bas du conteneur
+            .cardtext {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              font-size: 1.3em;
+            }
           }
         }
       }
@@ -155,8 +206,8 @@ $height: 1257.95px;
       order: 1;
       z-index: 3;
       width: 100%;
-      margin-top: 20px;
       position: relative;
+      box-sizing: border-box;
     }
 
     .cardcontainer {
@@ -164,17 +215,28 @@ $height: 1257.95px;
       left: 0;
       width: 100%;
       padding: 0;  // Réinitialiser le padding si nécessaire
+      transform: none;
+      box-sizing: border-box;
+      margin-bottom: 50px;
+
 
       .projects {
         width: 100%;
         margin-top: 0;
         gap: 20px;
+        left: 0;
+        transform: none;
+        align-items: center;
+        justify-content: center;
+        height: auto;
 
         .cards {
           width: 80%;
           height: auto; // Ajuster la hauteur automatiquement
           flex-direction: column;
           align-items: center;
+          margin-left: 0 !important;
+
         }
       }
     }

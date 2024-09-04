@@ -17,8 +17,20 @@
         }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 576px) {
     .presentation {
         height: 512px;
+        & > h1 {
+            font-size: 2em;
+            text-wrap: nowrap;
+        }
+        & > h2 {
+            font-size: 1.5em;
+            text-wrap: nowrap;
+        }
+        & > p {
+            font-size: 1.3em;
+            text-wrap: nowrap;
+        }
     }
 }

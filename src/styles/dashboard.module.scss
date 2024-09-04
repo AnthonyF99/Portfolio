@@ -1,0 +1,45 @@
+@import "shared_variables";
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 120px;
+    flex-direction: column;
+    .subcontainer {
+        box-shadow: 10px 0px 10px #181818;
+    }
+    .modifyButton {
+        padding: 20px !important;
+    }
+    .deleteButton {
+        padding: 20px !important;
+    }
+    & button {
+        font-size: 1.2em;
+        color: white;
+        padding: 50px;
+        border: 1px solid white;
+        background-color: $btnbackground2;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        &:hover {
+            background-color: $btnhover2;
+        }
+    }
+    & div {
+        display: flex;
+        flex-direction: column;
+        padding: 60px;
+        width: 100%;
+        margin-bottom: 30px;
+        background-color: #212121 ;
+        box-sizing: border-box;
+        border-radius: 15px;
+    }
+
+    & h2 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+}

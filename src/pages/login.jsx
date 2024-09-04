@@ -1,6 +1,6 @@
 import '../styles/globals.scss';
 import Header from '../components/Header/header.jsx';
-import Adminform from '../components/Admin/adminform.jsx';
+import Adminform from '../components/Admin/Login.jsx';
 
 
 export default function Adminloginpage() {

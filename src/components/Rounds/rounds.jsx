@@ -2,6 +2,7 @@ import styles from '../../styles/rounds.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
 import propsTypes from 'prop-types'
+import Icon from '../IconComponent/icon.jsx'
 
 
 
@@ -10,12 +11,7 @@ export default function About({title, url}) {
         <div className={styles.container}>
             <div className={styles.rounds}> 
                 <div className={styles.round}>
-                        <Image 
-                        src={url}
-                        width={50}
-                        height={50}
-                        alt={title}
-                    />
+                    <Icon iconName={url}/>
                 </div>
                 <p>{title}</p>
             </div>

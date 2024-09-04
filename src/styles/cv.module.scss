@@ -1,3 +1,5 @@
+@import "shared_variables";
+
 .cvcontainer {
     display: flex;
     justify-content: center;
@@ -9,20 +11,21 @@
     &>button {
         background-color: transparent !important;
         color: white;
-        border: 1px solid white;
+        border: 1px solid $border;
         padding: 30px 20px;
         width: 492px;
         font-size: 3em;
         border-radius: 20px;
         &:hover {
             cursor: pointer;
+            color: $btnhover;
         }
     }
 }
 
 .cvblock {
     margin-top: 30px;
-    border: 1px solid white;
+    border: 1px solid $border;
     border-radius: 20px;
     padding: 30px 60px;
     width: 521px;

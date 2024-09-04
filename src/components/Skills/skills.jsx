@@ -3,18 +3,18 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Round from '../Rounds/rounds.jsx';
 import HTML from '../../../public/assets/html.png'
+import useModularFetch from '../../hooks/modularFetch.js';
+
 
 export default function Skills() {
-    const [skills, setSkills] = useState([]);
     const [activeCategory, setActiveCategory] = useState('Hard Skills');
+    const { entities: skills, loading, error } = useModularFetch('/api/skills');
 
-    useEffect(() => {
-        // Charger les données des compétences depuis le fichier JSON
-        fetch('/data/skills.json')
-            .then(response => response.json())
-            .then(data => setSkills(data))
-            .catch(error => console.error('Error loading skills data:', error));
-    }, []);
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error loading projects: {error.message}</p>;
+
+
+
 
     const handleCategoryChange = (category) => {
         setActiveCategory(category);
