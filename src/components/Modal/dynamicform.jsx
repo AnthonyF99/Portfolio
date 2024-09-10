@@ -15,7 +15,7 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
     if (name === 'skills') {
       setFormData({
         ...formData,
-        skills: value.split(',').map((skill) => skill.trim()), // Si tu veux gérer les skills en tant que chaîne
+        skills: value.split(',').map((skill) => skill.trim()), // Division de la châine à chaque virgule. puis suppression des espaces
       });
     } else {
       setFormData({
@@ -29,7 +29,7 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
   const handleAddSkill = () => {
     setFormData({
       ...formData,
-      skills: [...formData.skills, ''], // Ajouter un nouveau champ de compétence vide
+      skills: Array.isArray(formData.skills) ? [...formData.skills, ''] : [''], // Vérifie que skills est bien un tableau
     });
   };
 
