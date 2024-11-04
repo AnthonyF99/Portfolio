@@ -4,7 +4,7 @@ const useModularFetch = (apiEndpoint) => {
   const [entities, setEntities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+// Entities récupére les data du endpoint mentionné.
   useEffect(() => {
     const fetchEntities = async () => {
       try {

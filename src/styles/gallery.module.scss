@@ -1,0 +1,27 @@
+.galleryContainer {
+    width: 100%;
+    height: auto;
+    margin-top: 10%;
+    .galleryWrap {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); // 4 colonnes
+        grid-template-rows: auto;
+        grid-gap: 30px;
+        .galleryCard {
+            width: 100%;
+            height: 300px;
+            background-color:grey;
+            border-radius: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            img {
+                margin-bottom: 45%;
+            }
+            .galleryCardContent {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}

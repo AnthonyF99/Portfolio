@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Modal from '../Modal/modal';
 import useModularFetch from '../../hooks/modularFetch.js';
+import Loader from '../Loader/loading.jsx';
+
 
 export default function Projectcard() {
   const [bgImage, setBgImage] = useState('');
@@ -55,10 +57,17 @@ export default function Projectcard() {
   if (error) return <p>Error loading projects: {error.message}</p>;
 
   return (
+    
     <div
-      className={styles.container}
-      style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-    >
+    className={styles.container}
+    style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+  >
+    {!selectedProject && (
+      <div className={styles.loader}>
+          <p className={styles.wait}>WAITING</p>
+      </div> // Affiche l'animation si aucun projet n'est sélectionné
+    )}
+  
       {!isMobile && selectedProject && (
         <div className={styles.moreinfo}>
           <p>{selectedProject.more}</p>

@@ -2,6 +2,8 @@ import styles from '../../styles/header.module.scss';
 import Link from 'next/link';
 import { FaBars } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
+import { CiGlobe } from "react-icons/ci";
+
 
 export default function Header({ activeSection }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -50,6 +52,14 @@ export default function Header({ activeSection }) {
           </li>
           <li className={activeSection === 'contact' ? styles.active : ''} onClick={handleLinkClick}>
             <Link href='/#contact'>Contact</Link>
+          </li>
+          <li className={activeSection === 'contact' ? styles.active : ''} onClick={handleLinkClick}>
+            <Link href='/hobbies'>Hobbies</Link>
+          </li>
+          <li className={activeSection === 'lang' ? styles.active : ''} onClick={handleLinkClick}>
+            <button>
+              <CiGlobe />
+            </button>
           </li>
         </ul>
         <div className={styles.icon} onClick={toggleMenu}>

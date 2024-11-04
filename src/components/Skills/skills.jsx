@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Round from '../Rounds/rounds.jsx';
 import HTML from '../../../public/assets/html.png'
 import useModularFetch from '../../hooks/modularFetch.js';
+import Loader from '../Loader/loading.jsx'
 
 
 export default function Skills() {

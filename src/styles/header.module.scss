@@ -23,6 +23,32 @@
     margin: 0;
     margin-right: 14%;
 
+    & > li > button {
+      display: flex;
+      font-size: 1.2em;
+      background: none;
+      border: none;
+      color: white;
+
+      &:hover {
+        cursor: pointer;
+        color: $activetext;
+      }
+      &::after {
+        content: "FR/EN";
+        position: absolute;
+        right: 12%;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      &:hover::after {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
     .active a {
       color: $activetext;
     }
@@ -37,6 +63,11 @@
         text-decoration: none;
       }
     }
+  }
+
+  .lang {
+    border: none;
+    background-color: none;
   }
   
   .icon {
