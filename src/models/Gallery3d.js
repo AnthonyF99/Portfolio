@@ -1,23 +1,23 @@
 import mongoose from 'mongoose';
 
 const Gallery3dSchema = new mongoose.Schema({
-   imageurl: {
+   galleryImageurl: {
     type: String,
     required: [true, 'Please provide an image for the project.'],
       },
-  title: {
+  galleryTitle: {
     type: String,
     required: [true, 'Please provide a title for the project.'],
     maxlength: [60, 'Title cannot be more than 60 characters'],
   },
-  description: {
+  galleryDescription: {
     type: String,
     required: [true, 'Please provide a description for the project.'],
   },
-  link: {
+  galleryLink: {
     type: String,
     required: [true, 'Please provide a link to the project.'],
   },
 });
 
-export default mongoose.models.Project || mongoose.model('Gallery3d', Gallery3dSchema);
+export default mongoose.models.Gallery3d || mongoose.model('Gallery3d', Gallery3dSchema);

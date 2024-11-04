@@ -7,11 +7,11 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case 'PUT':
-      const { imageurl, title, description, link } = req.body;
+      const { galleryImageurl, galleryTitle, galleryDescription, galleryLink } = req.body;
       try {
         const updatedGallery3d = await Gallery3d.findByIdAndUpdate(
           id,
-          { imageurl, title, description, link },
+          { galleryImageurl, galleryTitle, galleryDescription, galleryLink },
           { new: true }
         );
         if (!updatedGallery3d) {

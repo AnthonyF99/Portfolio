@@ -6,17 +6,17 @@ export default async function handler(req, res) {
 
   if (req.method === 'GET') {
     try {
-      const Gallery3ds = await Gallery3d.find();
-      console.log("gallerie récupérés :", Gallery3ds);
-      res.status(200).json(Gallery3ds);
+      const galleries3d = await Gallery3d.find();
+      console.log("gallerie récupérés :", galleries3d);
+      res.status(200).json(galleries3d);
     } catch (error) {
       console.error("Erreur lors de la récupération des gallerie :", error);
       res.status(500).json({ error: 'Échec de la récupération des gallerie' });
     }
   } else if (req.method === 'POST') {
-    const { imageurl, title, description, link} = req.body;
+    const { galleryImageurl, galleryTitle, galleryDescription, galleryLink} = req.body;
     try {
-      const newGallery3d = new Gallery3d({ imageurl, title, description, link });
+      const newGallery3d = new Gallery3d({ galleryImageurl, galleryTitle, galleryDescription, galleryLink });
       await newGallery3d.save();
       console.log("gallerie avec succès");
       res.status(200).json({ done: true });
