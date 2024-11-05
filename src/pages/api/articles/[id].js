@@ -12,15 +12,15 @@ export default async function handler(req, res) {
         const updatedArticle = await Article.findByIdAndUpdate(
           id,
           { title, description, url, category },
-          { new: true }
+          { new: true },
         );
         if (!updatedArticle) {
           return res.status(404).json({ error: 'Article non trouvé' });
         }
-        console.log("Article mis à jour avec succès");
+        console.log('Article mis à jour avec succès');
         res.status(200).json(updatedArticle); // Retourne le Article mis à jour
       } catch (error) {
-        console.error("Erreur lors de la mise à jour du Article :", error);
+        console.error('Erreur lors de la mise à jour du Article :', error);
         res.status(500).json({ error: 'Échec de la mise à jour du Article' });
       }
       break;
@@ -31,10 +31,10 @@ export default async function handler(req, res) {
         if (!deletedArticle) {
           return res.status(404).json({ error: 'Article non trouvé' });
         }
-        console.log("Article supprimé avec succès");
+        console.log('Article supprimé avec succès');
         res.status(204).end(); // No content
       } catch (error) {
-        console.error("Erreur lors de la suppression du Article :", error);
+        console.error('Erreur lors de la suppression du Article :', error);
         res.status(500).json({ error: 'Échec de la suppression du Article' });
       }
       break;

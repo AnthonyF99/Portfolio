@@ -10,39 +10,41 @@ import Contact from '../components/Contact/contact.jsx';
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
-    const [activeSection, setActiveSection] = useState('');
-    const sectionRefs = useRef([]);
-  
-    useEffect(() => {
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5,
-      };
-  
-      const observerCallback = (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      };
-  
-      const observer = new IntersectionObserver(observerCallback, observerOptions);
-  
-      sectionRefs.current.forEach((section) => {
-        if (section) observer.observe(section);
-      });
-  
-      return () => {
-        if (observer) {
-          sectionRefs.current.forEach((section) => {
-            if (section) observer.unobserve(section);
-          });
+  const [activeSection, setActiveSection] = useState('');
+  const sectionRefs = useRef([]);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5,
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
         }
-      };
-    }, []);
-  
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
+
+    sectionRefs.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      if (observer) {
+        sectionRefs.current.forEach((section) => {
+          if (section) observer.unobserve(section);
+        });
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -51,25 +53,53 @@ export default function Home() {
       </header>
       <main>
         <div className="scroll-container">
-          <section ref={(el) => (sectionRefs.current[0] = el)} className="snap-item" id="accueil">
+          <section
+            ref={(el) => (sectionRefs.current[0] = el)}
+            className="snap-item"
+            id="accueil"
+          >
             <Homes />
           </section>
-          <section ref={(el) => (sectionRefs.current[1] = el)} className="snap-item" id="a-propos">
+          <section
+            ref={(el) => (sectionRefs.current[1] = el)}
+            className="snap-item"
+            id="a-propos"
+          >
             <About />
           </section>
-          <section ref={(el) => (sectionRefs.current[2] = el)} className="snap-item" id="skills">
+          <section
+            ref={(el) => (sectionRefs.current[2] = el)}
+            className="snap-item"
+            id="skills"
+          >
             <Skills />
           </section>
-          <section ref={(el) => (sectionRefs.current[3] = el)} className="snap-item" id="projets">
+          <section
+            ref={(el) => (sectionRefs.current[3] = el)}
+            className="snap-item"
+            id="projets"
+          >
             <Project title="Template" description="Template" />
           </section>
-          <section ref={(el) => (sectionRefs.current[4] = el)} className="snap-item" id="cv">
+          <section
+            ref={(el) => (sectionRefs.current[4] = el)}
+            className="snap-item"
+            id="cv"
+          >
             <CV />
           </section>
-          <section ref={(el) => (sectionRefs.current[5] = el)} className="snap-item" id="veille-technologique">
+          <section
+            ref={(el) => (sectionRefs.current[5] = el)}
+            className="snap-item"
+            id="veille-technologique"
+          >
             <Blogveille />
           </section>
-          <section ref={(el) => (sectionRefs.current[6] = el)} className="snap-item" id="contact">
+          <section
+            ref={(el) => (sectionRefs.current[6] = el)}
+            className="snap-item"
+            id="contact"
+          >
             <Contact />
           </section>
         </div>

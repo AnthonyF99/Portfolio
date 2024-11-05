@@ -1,5 +1,5 @@
 import dbConnect from '../../../lib/dbConnect';
-import Gallery3d from '../../../models/Gallery3d'; 
+import Gallery3d from '../../../models/Gallery3d';
 
 export default async function handler(req, res) {
   const { id } = req.query; // L'ID doit venir de la query string
@@ -7,20 +7,21 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case 'PUT':
-      const { galleryImageurl, galleryTitle, galleryDescription, obj } = req.body;
+      const { galleryImageurl, galleryTitle, galleryDescription, obj } =
+        req.body;
       try {
         const updatedGallery3d = await Gallery3d.findByIdAndUpdate(
           id,
           { galleryImageurl, galleryTitle, galleryDescription, obj },
-          { new: true }
+          { new: true },
         );
         if (!updatedGallery3d) {
           return res.status(404).json({ error: 'Gallery3d non trouvé' });
         }
-        console.log("Gallery3d mis à jour avec succès");
+        console.log('Gallery3d mis à jour avec succès');
         res.status(200).json(updatedGallery3d); // Retourne le Gallery3d mis à jour
       } catch (error) {
-        console.error("Erreur lors de la mise à jour du Gallery3d :", error);
+        console.error('Erreur lors de la mise à jour du Gallery3d :', error);
         res.status(500).json({ error: 'Échec de la mise à jour du Gallery3d' });
       }
       break;
@@ -31,15 +32,15 @@ export default async function handler(req, res) {
         if (!deletedGallery3d) {
           return res.status(404).json({ error: 'Gallery3d non trouvé' });
         }
-        console.log("Gallery3d supprimé avec succès");
+        console.log('Gallery3d supprimé avec succès');
         res.status(204).end(); // No content
       } catch (error) {
-        console.error("Erreur lors de la suppression du Gallery3d :", error);
+        console.error('Erreur lors de la suppression du Gallery3d :', error);
         res.status(500).json({ error: 'Échec de la suppression du Gallery3d' });
       }
       break;
 
-     case 'GET':
+    case 'GET':
       try {
         const gallery = await Gallery3d.findById(id);
         if (!gallery) {
@@ -47,8 +48,10 @@ export default async function handler(req, res) {
         }
         res.status(200).json(gallery);
       } catch (error) {
-        console.error("Erreur lors de la récupération de la galerie :", error);
-        res.status(500).json({ error: 'Échec de la récupération de la galerie' });
+        console.error('Erreur lors de la récupération de la galerie :', error);
+        res
+          .status(500)
+          .json({ error: 'Échec de la récupération de la galerie' });
       }
       break;
 

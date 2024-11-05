@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Icons from 'react-icons/fa';
 
-const IconDisplay = ({ iconName, size= 50 }) => {
+const IconDisplay = ({ iconName, size = 50 }) => {
   const IconComponent = Icons[iconName];
 
   if (!IconComponent) {

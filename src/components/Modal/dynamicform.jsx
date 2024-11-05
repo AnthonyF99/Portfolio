@@ -33,7 +33,6 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
     });
   };
 
-
   // Fonction pour gérer la modification d'un skill
   const handleSkillChange = (index, value) => {
     const newSkills = [...formData.skills];
@@ -85,20 +84,27 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
                 </option>
               ))}
             </select>
-          ):
-            field.name === 'skills' ? (
+          ) : field.name === 'skills' ? (
             <div>
-              {formData.skills && formData.skills.map((skill, index) => (
-                <div key={index}>
-                  <input
-                    type="text"
-                    value={skill}
-                    onChange={(e) => handleSkillChange(index, e.target.value)}
-                  />
-                  <button type="button" onClick={() => handleRemoveSkill(index)}>Remove</button>
-                </div>
-              ))}
-              <button type="button" onClick={handleAddSkill}>Add Skill</button>
+              {formData.skills &&
+                formData.skills.map((skill, index) => (
+                  <div key={index}>
+                    <input
+                      type="text"
+                      value={skill}
+                      onChange={(e) => handleSkillChange(index, e.target.value)}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveSkill(index)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))}
+              <button type="button" onClick={handleAddSkill}>
+                Add Skill
+              </button>
             </div>
           ) : field.type === 'textarea' ? (
             <textarea
@@ -116,7 +122,7 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
           )}
         </div>
       ))}
-       {type === 'skill' && formData.url && (
+      {type === 'skill' && formData.url && (
         <div>
           <p>Selected Icon:</p>
           {/* Utiliser directement l'icône choisie */}

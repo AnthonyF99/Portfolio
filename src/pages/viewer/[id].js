@@ -8,7 +8,11 @@ export default function ViewerPage() {
   const { id } = router.query;
 
   // Utilisation de useModularFetch pour récupérer la galerie par ID
-  const { entities: gallery, loading, error } = useModularFetch(id ? `/api/galleries3d/${id}` : null);
+  const {
+    entities: gallery,
+    loading,
+    error,
+  } = useModularFetch(id ? `/api/galleries3d/${id}` : null);
 
   // Gestion des états de chargement et d'erreur
   if (loading) return <p>Chargement...</p>;
