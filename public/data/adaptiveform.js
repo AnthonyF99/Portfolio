@@ -25,5 +25,11 @@ export const schemas = {
     { name: 'description', type: 'textarea', label: 'Description' },
     { name: 'category', type: 'text', label: 'Category' },
   ],
+  gallery: [
+    { name: 'galleryImageurl', type: 'text', label: 'Image URL' },
+    { name: 'galleryTitle', type: 'text', label: 'Title' },
+    { name: 'galleryDescription', type: 'textarea', label: 'Description' },
+    { name: 'obj', type: 'text', label: 'Obj' },
+  ],
   // Ajouter d'autres types ici...
 };

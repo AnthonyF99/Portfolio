@@ -3,6 +3,7 @@ import Projects from './projects.jsx';
 import Skills from './skills.jsx';
 import Article from './article.jsx';
 import Cv from './cv.jsx';
+import Gallery from './3dgallery.jsx';
 
 export default function Dashboard() {
   return (
@@ -19,6 +20,9 @@ export default function Dashboard() {
       </div>
       <div className={styles.subcontainer}>
         <Cv />
+      </div>
+      <div className={styles.subcontainer}>
+        <Gallery />
       </div>
     </div>
   );
