@@ -14,7 +14,7 @@ const Gallery3dSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide a description for the project.'],
   },
-  galleryLink: {
+  obj: {
     type: String,
     required: [true, 'Please provide a link to the project.'],
   },

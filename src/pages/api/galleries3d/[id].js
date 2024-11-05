@@ -7,11 +7,11 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case 'PUT':
-      const { galleryImageurl, galleryTitle, galleryDescription, galleryLink } = req.body;
+      const { galleryImageurl, galleryTitle, galleryDescription, obj } = req.body;
       try {
         const updatedGallery3d = await Gallery3d.findByIdAndUpdate(
           id,
-          { galleryImageurl, galleryTitle, galleryDescription, galleryLink },
+          { galleryImageurl, galleryTitle, galleryDescription, obj },
           { new: true }
         );
         if (!updatedGallery3d) {
@@ -36,6 +36,19 @@ export default async function handler(req, res) {
       } catch (error) {
         console.error("Erreur lors de la suppression du Gallery3d :", error);
         res.status(500).json({ error: 'Échec de la suppression du Gallery3d' });
+      }
+      break;
+
+     case 'GET':
+      try {
+        const gallery = await Gallery3d.findById(id);
+        if (!gallery) {
+          return res.status(404).json({ error: 'Gallery3d non trouvé' });
+        }
+        res.status(200).json(gallery);
+      } catch (error) {
+        console.error("Erreur lors de la récupération de la galerie :", error);
+        res.status(500).json({ error: 'Échec de la récupération de la galerie' });
       }
       break;
 

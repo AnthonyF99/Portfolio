@@ -2,6 +2,7 @@ import dbConnect from '../../../lib/dbConnect';
 import Gallery3d from '../../../models/Gallery3d';
 
 export default async function handler(req, res) {
+  
   await dbConnect();
 
   if (req.method === 'GET') {
@@ -14,9 +15,9 @@ export default async function handler(req, res) {
       res.status(500).json({ error: 'Échec de la récupération des gallerie' });
     }
   } else if (req.method === 'POST') {
-    const { galleryImageurl, galleryTitle, galleryDescription, galleryLink} = req.body;
+    const { galleryImageurl, galleryTitle, galleryDescription, obj} = req.body;
     try {
-      const newGallery3d = new Gallery3d({ galleryImageurl, galleryTitle, galleryDescription, galleryLink });
+      const newGallery3d = new Gallery3d({ galleryImageurl, galleryTitle, galleryDescription, obj });
       await newGallery3d.save();
       console.log("gallerie avec succès");
       res.status(200).json({ done: true });
