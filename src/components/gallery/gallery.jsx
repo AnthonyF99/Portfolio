@@ -13,8 +13,7 @@ export default function Gallery() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading 3D projects: {error.message}</p>;
 
-  let value = 0;
-  let cardnumber = value++;
+  let cardnumber = 0;
 
   return (
     <div className={styles.galleryContainer}>
@@ -41,7 +40,7 @@ export default function Gallery() {
                     />
                   </div>
                   <div className={styles.cardNumber}>
-                    <p>{cardnumber}</p>
+                    <p>{cardnumber++}</p>
                   </div>
                 </div>
                 <div className={styles.cardPrototypeContainer}>

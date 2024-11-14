@@ -147,6 +147,11 @@ $height: 1257.95px;
           border: 1px solid transparent;
           cursor: pointer;
         }
+        &.active {
+          background: linear-gradient(#222222, #222222) padding-box,
+          linear-gradient(to bottom, #8C8C8C, #5A7251, #1f3317) border-box;
+          border: 1px solid transparent;
+        }
       }
     }
   }

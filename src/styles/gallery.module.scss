@@ -16,7 +16,8 @@
         grid-gap: 30px;
         .galleryCard {
             width: 100%;
-            max-height: 500px;
+            max-height: 350px;
+            min-height: 300px;
             height: auto;
             background-color: #252525;
             border: 1px white solid;
@@ -41,6 +42,9 @@
             .galleryCardContent {
                 display: flex;
                 flex-direction: column;
+                .cardInfo {
+                    min-height: 45px;
+                }
                 .cardUniqueID {
                     display: flex;
                     color: black;
@@ -60,6 +64,7 @@
                 .cardPrototypeContainer {
                     display: inline-flex;
                     justify-content: space-between;
+                    margin-top: 5px;
                     .cardPrototype {
                         font-size: 8px;
                     }

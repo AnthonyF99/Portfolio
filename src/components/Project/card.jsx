@@ -101,7 +101,9 @@ export default function Projectcard() {
           {currentProjects.map((project, index) => (
             <div
               key={project._id}
-              className={styles.cards}
+              className={`${styles.cards} ${
+                selectedProject?._id === project._id ? styles.active : ''
+              }`}
               style={{ marginLeft: `${(index % 5) * 60}px` }}
               onClick={() => handleCardClick(project)}
             >

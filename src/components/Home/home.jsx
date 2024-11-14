@@ -1,11 +1,20 @@
 import styles from '../../styles/home.module.scss';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Header() {
   return (
     <div className={styles.presentation}>
-      <h1>Fontaine Anthony</h1>
-      <h2>Développeur web junior</h2>
-      <p>Diplomé niveau 5 bac+2</p>
+      <h1>Mon nom est, </h1>
+      <h2>Je suis, Développeur web</h2>
+      <div className={styles.cta}>
+        <Link href="/#contact">
+          <button>Contactez moi</button>
+        </Link>
+        <Link href="/#contact">
+          <button>Allez voir mes projets</button>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -22,6 +22,16 @@ section{
     margin-bottom: 90px;
 }
 
+#accueil {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+
 .snap-item {
   animation: myAnim 2s ease 0s 1 normal forwards;
 }
