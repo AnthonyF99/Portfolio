@@ -4,11 +4,15 @@ import Header from '../components/Header/header.jsx';
 
 export default function Hobbies() {
   return (
-    <main className="main">
-      <Header />
-      <div className="container">
-        <Gallery />
-      </div>
-    </main>
+    <>
+      <header>
+        <Header />
+      </header>
+      <main>
+        <div className="hobbies-container">
+          <Gallery />
+        </div>
+      </main>
+    </>
   );
 }

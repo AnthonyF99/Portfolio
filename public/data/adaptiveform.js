@@ -2,7 +2,7 @@ export const schemas = {
   project: [
     { name: 'title', type: 'text', label: 'Title' },
     { name: 'description', type: 'textarea', label: 'Description' },
-    { name: 'imageurl', type: 'text', label: 'Image URL' },
+    { name: 'imageurl', type: 'file', label: 'Image URL', accept: 'image/*' },
     { name: 'more', type: 'text', label: 'More Info' },
     { name: 'skills', type: 'text', label: 'Mes skills' },
     { name: 'link', type: 'text', label: 'Lien github' },
@@ -11,7 +11,7 @@ export const schemas = {
   article: [
     { name: 'title', type: 'text', label: 'Title' },
     { name: 'description', type: 'textarea', label: 'Description' },
-    { name: 'url', type: 'text', label: 'Image URL' },
+    { name: 'url', type: 'file', label: 'Image URL', accept: 'image/*' },
     { name: 'category', type: 'text', label: 'Category' },
   ],
   skill: [
@@ -26,7 +26,12 @@ export const schemas = {
     { name: 'category', type: 'text', label: 'Category' },
   ],
   gallery: [
-    { name: 'galleryImageurl', type: 'text', label: 'Image URL' },
+    {
+      name: 'galleryImageurl',
+      type: 'file',
+      label: 'Image URL',
+      accept: 'image/*',
+    },
     { name: 'galleryTitle', type: 'text', label: 'Title' },
     { name: 'galleryDescription', type: 'textarea', label: 'Description' },
     { name: 'obj', type: 'text', label: 'Obj' },

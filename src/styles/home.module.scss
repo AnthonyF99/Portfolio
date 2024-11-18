@@ -21,8 +21,12 @@
             padding: 10px;
             border: 1px solid transparent;
             background: linear-gradient(#1F1F1F, #1F1F1F) padding-box,
-            linear-gradient(to bottom, #8C8C8C, #5A7251, #1f3317) border-box;       
+            linear-gradient(to bottom, #8C8C8C, #5A7251, #1f3317) border-box;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
          }
+     
         .cta {
             display: flex;
             gap: 8px;
@@ -33,15 +37,59 @@
                 background: linear-gradient(#1F1F1F, #1F1F1F) padding-box,
                 linear-gradient(to bottom, #8C8C8C, #5A7251, #1f3317) border-box;
                 border-radius: 5px;
+                letter-spacing: 0.1em;
+                font-weight: 400;
                 padding: 15px 20px;
                 cursor: pointer;
+                transition: 0.5s;
+                
+                &:hover {
+                    letter-spacing: 0.25em;
+                    box-shadow: 0 0 0 2px rgba(90, 114, 81, 1), /* Bordure verte */
+                
+                }
+       
             }
         }
         h1, h2, .cta {
-            margin-left: 10%;
+            margin-left: 15%;
         }
             
 }
+
+/* Create the shine effect animation */
+@keyframes shineEffect {
+    0% {
+        transform: rotate(20deg) translateX(0%);
+        left: -100%;
+        opacity: 0.9;
+    }
+    50% {
+        transform: rotate(20deg) translateX(50%);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(20deg) translateX(100%);
+        opacity: 0.9;
+        left: 100%;
+    }
+}
+
+/* Styling the shiny effect on h2 */
+.presentation h2::before {
+    content: '';
+    position: absolute;
+    height: 100px;
+    width: 30px; 
+    background-color: #f3f3f3;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    filter: blur(1px);
+    opacity: 0.9;
+    top: -30px;
+    left: -100%;
+    animation: shineEffect 3s infinite;
+}
+
 
 @media screen and (max-width: 576px) {
     .presentation {

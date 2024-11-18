@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { schemas } from '../../../public/data/adaptiveform.js';
+import Image from 'next/image';
 import * as Icons from 'react-icons/fa'; // Importer toutes les icônes Fa (ou une autre collection)
-import React from 'react'; // Assurez-vous d'importer React pour utiliser React.createElement
+import React from 'react';
 
 const DynamicForm = ({ type, onSubmit, initialData }) => {
   // Initialiser l'état avec les données initiales ou un objet vide
   const [formData, setFormData] = useState(initialData || { skills: [] });
+  const [imageUrl, setImageUrl] = useState(null);
 
   // Fonction pour gérer les changements dans les champs du formulaire
   const handleChange = (e) => {
@@ -22,6 +24,36 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
         ...formData,
         [name]: value,
       });
+    }
+  };
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Image téléchargée avec succès :', data);
+
+        // Assumer que l'URL de l'image retournée par l'API est dans data.imageUrl
+        setFormData({
+          ...formData,
+          imageurl: data.imageUrl, // Mettre l'URL de l'image dans le state
+        });
+      } else {
+        console.error('Erreur lors du téléchargement :', await response.text());
+      }
+    } catch (err) {
+      console.error('Erreur lors de la requête :', err);
     }
   };
 
@@ -55,6 +87,7 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
   // Fonction pour gérer la soumission du formulaire
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('Form Data:', formData);
     onSubmit(formData);
   };
 
@@ -112,6 +145,22 @@ const DynamicForm = ({ type, onSubmit, initialData }) => {
               value={formData[field.name] || ''}
               onChange={handleChange}
             />
+          ) : field.type === 'file' ? (
+            <div>
+              <label>Image</label>
+              <input type="file" onChange={handleFileChange} />
+              {imageUrl && (
+                <div>
+                  <p>Image téléchargée :</p>
+                  <Image
+                    src={imageUrl}
+                    alt="Uploaded"
+                    width={100}
+                    height={100}
+                  />
+                </div>
+              )}
+            </div>
           ) : (
             <input
               type={field.type}
