@@ -7,6 +7,7 @@ import Project from '../components/Project/card.jsx';
 import CV from '../components/CV/cv.jsx';
 import Blogveille from '../components/BlogVeille/blogveille.jsx';
 import Contact from '../components/Contact/contact.jsx';
+import Footer from '../components/Footer/footer.jsx';
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
@@ -103,6 +104,9 @@ export default function Home() {
             <Contact />
           </section>
         </div>
+        <footer>
+          <Footer />
+        </footer>
       </main>
     </>
   );

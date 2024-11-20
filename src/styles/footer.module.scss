@@ -1,0 +1,87 @@
+@import "shared_variables";
+
+.footerContent {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #1F1F1F;
+    .footerMiddle {
+        display: flex;
+        justify-content: space-between;
+        .links, .socials {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            list-style: none;
+            padding: 0;
+            a {
+                color: $textcolor;
+                text-decoration: none;
+                &:hover {
+                    color: $activetext;
+                    text-decoration: underline;
+                }
+            }
+   
+        }
+    }
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    .line {
+        flex: 1;
+        border: none;
+        height: 1px;
+        background-color: #ccc;
+    }
+    .separatorText {
+        padding: 0 10px; 
+        font-weight: bold;
+        animation: glitch 725ms infinite;
+        letter-spacing:0.3rem;
+        user-select: none;
+    }
+}
+
+.footerBottom {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+@keyframes glitch {
+    0% {
+      text-shadow: 0.05em 0 0 $activetext, -0.03em -0.04em 0 $texthover,
+        0.025em 0.04em 0 $btnhover;
+    }
+    15% {
+      text-shadow: 0.05em 0 0 $activetext, -0.03em -0.04em 0 $texthover,
+        0.025em 0.04em 0 $btnhover;
+    }
+    16% {
+      text-shadow: -0.05em -0.025em 0 $activetext, 0.025em 0.035em 0 $texthover,
+        -0.05em -0.05em 0 $btnhover;
+    }
+    49% {
+      text-shadow: -0.05em -0.025em 0 $activetext, 0.025em 0.035em 0 $texthover,
+        -0.05em -0.05em 0 $btnhover;
+    }
+    50% {
+      text-shadow: 0.05em 0.035em 0 $activetext, 0.03em 0 0 $texthover,
+        0 -0.04em 0 $btnhover;
+    }
+    99% {
+      text-shadow: 0.05em 0.035em 0 $activetext, 0.03em 0 0 $texthover,
+        0 -0.04em 0 $btnhover;
+    }
+    100% {
+      text-shadow: -0.05em 0 0 $activetext, -0.025em -0.04em 0 $texthover,
+        -0.04em -0.025em 0 $btnhover;
+    }
+  }
+
+
