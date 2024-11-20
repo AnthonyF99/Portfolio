@@ -34,7 +34,9 @@ export default function About() {
       </div>
       <div className={styles.socials}>
         <div className={styles.socialround} id="linkedin">
-          <Link href="https://www.linkedin.com/in/anthony-fontaine-75b959187/"></Link>
+          <Link href="https://www.linkedin.com/in/anthony-fontaine-75b959187/">
+            <Image src={linkedin} width={50} height={50} alt="Logo linkedin" />
+          </Link>
         </div>
         <div className={styles.socialround} id="github">
           <Link href="https://github.com/AnthonyF99">
