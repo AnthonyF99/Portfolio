@@ -9,9 +9,9 @@ const useEntityManager = (entityType, apiEndpoint) => {
   useEffect(() => {
     // Appel API pour récupérer les entités
     fetch(apiEndpoint)
-      .then(response => response.json())
-      .then(data => setEntities(data))
-      .catch(error => console.error(`Error fetching ${entityType}:`, error));
+      .then((response) => response.json())
+      .then((data) => setEntities(data))
+      .catch((error) => console.error(`Error fetching ${entityType}:`, error));
   }, [apiEndpoint, entityType]);
 
   // Fonction pour gérer l'ouverture du formulaire pour ajouter une entité
@@ -28,8 +28,8 @@ const useEntityManager = (entityType, apiEndpoint) => {
     setIsFormOpen(true);
   };
 
-   // Fonction pour fermer le formulaire
-   const handleCloseForm = () => {
+  // Fonction pour fermer le formulaire
+  const handleCloseForm = () => {
     setIsFormOpen(false);
     setSelectedEntity(null);
   };
@@ -37,8 +37,9 @@ const useEntityManager = (entityType, apiEndpoint) => {
   // Fonction pour gérer la soumission du formulaire
   const handleSubmit = (data) => {
     const method = formType === 'add' ? 'POST' : 'PUT';
-    const url = formType === 'add' ? apiEndpoint : `${apiEndpoint}/${selectedEntity._id}`;
-    
+    const url =
+      formType === 'add' ? apiEndpoint : `${apiEndpoint}/${selectedEntity._id}`;
+
     fetch(url, {
       method: method,
       headers: {
@@ -46,16 +47,18 @@ const useEntityManager = (entityType, apiEndpoint) => {
       },
       body: JSON.stringify(data),
     })
-    .then(response => response.json())
-    .then(result => {
-      if (formType === 'add') {
-        setEntities([...entities, result]); // Ajouter la nouvelle entité à la liste
-      } else {
-        setEntities(entities.map(ent => ent._id === result._id ? result : ent)); // Mettre à jour l'entité modifiée
-      }
-      setIsFormOpen(false); // Fermer le formulaire
-    })
-    .catch(error => console.error('Error submitting form:', error));
+      .then((response) => response.json())
+      .then((result) => {
+        if (formType === 'add') {
+          setEntities([...entities, result]); // Ajouter la nouvelle entité à la liste
+        } else {
+          setEntities(
+            entities.map((ent) => (ent._id === result._id ? result : ent)),
+          ); // Mettre à jour l'entité modifiée
+        }
+        setIsFormOpen(false); // Fermer le formulaire
+      })
+      .catch((error) => console.error('Error submitting form:', error));
   };
 
   // Fonction pour gérer la suppression d'une entité
@@ -63,11 +66,11 @@ const useEntityManager = (entityType, apiEndpoint) => {
     fetch(`${apiEndpoint}/${entityId}`, {
       method: 'DELETE',
     })
-    .then(response => response.json())
-    .then(() => {
-      setEntities(entities.filter(ent => ent._id !== entityId)); // Mettre à jour la liste des entités
-    })
-    .catch(error => console.error('Error deleting entity:', error));
+      .then((response) => response.json())
+      .then(() => {
+        setEntities(entities.filter((ent) => ent._id !== entityId)); // Mettre à jour la liste des entités
+      })
+      .catch((error) => console.error('Error deleting entity:', error));
   };
 
   return {

@@ -9,7 +9,7 @@ export default function Contact() {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
 
   const [statusMessage, setStatusMessage] = useState('');
@@ -18,7 +18,7 @@ export default function Contact() {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -31,11 +31,11 @@ export default function Contact() {
         'service_t91hv8g', // ID du service
         'template_39o3nuj', // ID du template
         formData,
-        'dWM9C5n7598LcQ8AT' // Clé publique de l'utilisateur
+        'dWM9C5n7598LcQ8AT', // Clé publique de l'utilisateur
       );
       setStatusMessage('Message sent successfully!');
     } catch (error) {
-      console.error('Erreur lors de l\'envoi de l\'email:', error);
+      console.error("Erreur lors de l'envoi de l'email:", error);
       setStatusMessage('Failed to send message.');
     }
   };
@@ -43,12 +43,7 @@ export default function Contact() {
   return (
     <div className={styles.container}>
       <div className={styles.asidecontainer}>
-        <Image
-          src={Chrome}
-          width={545}
-          height={1024}
-          alt="Photo"
-        />
+        <Image src={Chrome} width={545} height={1024} alt="Photo" />
       </div>
       <div className={styles.contactcontainer}>
         <form onSubmit={handleSubmit} className={styles.contactform}>

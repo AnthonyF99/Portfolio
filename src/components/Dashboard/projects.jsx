@@ -33,10 +33,12 @@ const Projects = () => {
 
       {isFormOpen && (
         <div>
-          <h3>{formType === 'add' ? 'Ajouter un Projet' : 'Modifier le Projet'}</h3>
-          <DynamicForm 
-            type="project" 
-            onSubmit={handleSubmit} 
+          <h3>
+            {formType === 'add' ? 'Ajouter un Projet' : 'Modifier le Projet'}
+          </h3>
+          <DynamicForm
+            type="project"
+            onSubmit={handleSubmit}
             initialData={selectedEntity || {}}
           />
           {/* Le bouton "Annuler" est maintenant inclus dans le bouton principal */}
@@ -59,8 +61,18 @@ const Projects = () => {
               <td>{project.title}</td>
               <td>{project.description}</td>
               <td>
-                <button className={styles.modifyButton} onClick={() => handleEditEntity(project)}>Modifier projet</button>
-                <button className={styles.deleteButton} onClick={() => handleDeleteEntity(project._id)}>Supprimer projet</button>
+                <button
+                  className={styles.modifyButton}
+                  onClick={() => handleEditEntity(project)}
+                >
+                  Modifier projet
+                </button>
+                <button
+                  className={styles.deleteButton}
+                  onClick={() => handleDeleteEntity(project._id)}
+                >
+                  Supprimer projet
+                </button>
               </td>
             </tr>
           ))}

@@ -36,6 +36,59 @@ $height: 1257.95px;
       }
     }
   }
+
+  /* Animation waiting */
+  @keyframes glitch {
+    0% {
+      text-shadow: 0.05em 0 0 $activetext, -0.03em -0.04em 0 $texthover,
+        0.025em 0.04em 0 $btnhover;
+    }
+    15% {
+      text-shadow: 0.05em 0 0 $activetext, -0.03em -0.04em 0 $texthover,
+        0.025em 0.04em 0 $btnhover;
+    }
+    16% {
+      text-shadow: -0.05em -0.025em 0 $activetext, 0.025em 0.035em 0 $texthover,
+        -0.05em -0.05em 0 $btnhover;
+    }
+    49% {
+      text-shadow: -0.05em -0.025em 0 $activetext, 0.025em 0.035em 0 $texthover,
+        -0.05em -0.05em 0 $btnhover;
+    }
+    50% {
+      text-shadow: 0.05em 0.035em 0 $activetext, 0.03em 0 0 $texthover,
+        0 -0.04em 0 $btnhover;
+    }
+    99% {
+      text-shadow: 0.05em 0.035em 0 $activetext, 0.03em 0 0 $texthover,
+        0 -0.04em 0 $btnhover;
+    }
+    100% {
+      text-shadow: -0.05em 0 0 $activetext, -0.025em -0.04em 0 $texthover,
+        -0.04em -0.025em 0 $btnhover;
+    }
+  }
+  @keyframes opcty{
+    0% { opacity:0 }
+    100% { opacity:1 }
+  }
+
+  .loader {
+    display: flex;
+    flex-direction: column;
+    animation: opcty 1s  ease-in-out;
+    .wait{
+      position: absolute;
+      animation: glitch 725ms infinite;
+      top: 50%;
+      left: 50%;
+      font-size: 2em;
+      letter-spacing:0.3rem;
+    }
+  }
+
+  /* Fin aniamtion */
+  
   .cardcontainer {
     position: relative;
     left: -310px;
@@ -93,6 +146,11 @@ $height: 1257.95px;
           linear-gradient(to bottom, #8C8C8C, #5A7251, #1f3317) border-box;
           border: 1px solid transparent;
           cursor: pointer;
+        }
+        &.active {
+          background: linear-gradient(#222222, #222222) padding-box,
+          linear-gradient(to bottom, #8C8C8C, #5A7251, #1f3317) border-box;
+          border: 1px solid transparent;
         }
       }
     }
