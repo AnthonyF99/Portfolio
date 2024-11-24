@@ -2,7 +2,7 @@ import styles from '../../styles/home.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Header() {
+export default function Home() {
   return (
     <div className={styles.presentation}>
       <h1>Mon nom est, </h1>

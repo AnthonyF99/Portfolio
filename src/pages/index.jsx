@@ -52,58 +52,62 @@ export default function Home() {
       <header>
         <Header activeSection={activeSection} />
       </header>
+
       <main>
-        <div className="scroll-container">
-          <section
-            ref={(el) => (sectionRefs.current[0] = el)}
-            className="snap-item"
-            id="accueil"
-          >
-            <Homes />
-          </section>
-          <section
-            ref={(el) => (sectionRefs.current[1] = el)}
-            className="snap-item"
-            id="a-propos"
-          >
-            <About />
-          </section>
-          <section
-            ref={(el) => (sectionRefs.current[2] = el)}
-            className="snap-item"
-            id="skills"
-          >
-            <Skills />
-          </section>
-          <section
-            ref={(el) => (sectionRefs.current[3] = el)}
-            className="snap-item"
-            id="projets"
-          >
-            <Project title="Template" description="Template" />
-          </section>
-          <section
-            ref={(el) => (sectionRefs.current[4] = el)}
-            className="snap-item"
-            id="cv"
-          >
-            <CV />
-          </section>
-          <section
-            ref={(el) => (sectionRefs.current[5] = el)}
-            className="snap-item"
-            id="veille-technologique"
-          >
-            <Blogveille />
-          </section>
-          <section
-            ref={(el) => (sectionRefs.current[6] = el)}
-            className="snap-item"
-            id="contact"
-          >
-            <Contact />
-          </section>
+        <section
+          ref={(el) => (sectionRefs.current[0] = el)}
+          className="snap-item"
+          id="accueil"
+        >
+          <Homes />
+        </section>
+        <div className="wrapper">
+          <div className="scroll-container">
+            <section
+              ref={(el) => (sectionRefs.current[1] = el)}
+              className="snap-item"
+              id="a-propos"
+            >
+              <About />
+            </section>
+            <section
+              ref={(el) => (sectionRefs.current[2] = el)}
+              className="snap-item"
+              id="skills"
+            >
+              <Skills />
+            </section>
+            <section
+              ref={(el) => (sectionRefs.current[3] = el)}
+              className="snap-item"
+              id="projets"
+            >
+              <Project title="Template" description="Template" />
+            </section>
+            <section
+              ref={(el) => (sectionRefs.current[4] = el)}
+              className="snap-item"
+              id="cv"
+            >
+              <CV />
+            </section>
+            <section
+              ref={(el) => (sectionRefs.current[5] = el)}
+              className="snap-item"
+              id="veille-technologique"
+            >
+              <Blogveille />
+            </section>
+            <section
+              ref={(el) => (sectionRefs.current[6] = el)}
+              className="snap-item"
+              id="contact"
+            >
+              <Contact />
+            </section>
+          </div>
         </div>
+
         <footer>
           <Footer />
         </footer>
