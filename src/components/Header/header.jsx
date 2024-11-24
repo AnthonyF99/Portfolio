@@ -83,6 +83,7 @@ export default function Header({ activeSection }) {
           >
             <Link href="/hobbies">Hobbies</Link>
           </li>
+          {/* 
           <li
             className={activeSection === 'lang' ? styles.active : ''}
             onClick={handleLinkClick}
@@ -91,6 +92,7 @@ export default function Header({ activeSection }) {
               <CiGlobe />
             </button>
           </li>
+          */}
         </ul>
         <div className={styles.icon} onClick={toggleMenu}>
           <FaBars />
